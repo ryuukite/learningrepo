@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "deploy": "scp -r app.js nodetest:~/dev/repo && ssh nodetest 'pm2 restart app'"
   },
   "repository": {
     "type": "git",

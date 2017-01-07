@@ -13,7 +13,7 @@ app.listen(3000, function() {
 })
 
 app.post('/post',function (req,res){
-	res.send('YOU POSTED :'+ req.body.name)
+	res.send('you posted :'+ req.body.name)
 })
 
 
