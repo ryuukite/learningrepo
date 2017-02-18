@@ -14,7 +14,7 @@ app.listen(3000, function() {
 })
 
 app.post('/post',function (req,res){
-	res.send('you posted :'+ req.body.name)
-})
-
+res.set('Content-Type', 'text/plain')	
+res.send('you posted: \n name='+req.body.name + ' \n username='+ req.body.username +' \n password='+req.body.password + ' \n email='+req.body.email + '\n')}
+)
 
