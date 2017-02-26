@@ -1,6 +1,6 @@
-var mongoose = require('mongoose'),
-user = mongoose.model('user')
-
+var mongoose = require('mongoose')
+var user = mongoose.model('user')
+var util = require ('util')
 //defines user functions 
 
 //exports.findAll = function() {}
@@ -9,7 +9,14 @@ exports.add = function(req, res) {
 
 user.create(req.body, function(err, user){
 
-        if (err) return console.log(err)
+        if (err) {
+		console.log(util.inspect(err))
+		if (err.name === 'MongoError' && err.code === 11000){
+			//Duplicate check
+		return res.status(500).send('Username ' + req.body.username  + ' already exists!')
+				}
+			return console.log(err)
+	}
         	//mongoose.disconnect()
 	return res.send(user)
 
